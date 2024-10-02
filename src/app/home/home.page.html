@@ -1,20 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title slot="start">
+      Figura Geometrica
     </ion-title>
+    <ion-select (ionChange)="selectChange($event)" slot="end" label="Escoja una figura geometrica">
+      <ion-select-option value="circulo">circulo</ion-select-option>
+      <ion-select-option value="triangulo">triangulo</ion-select-option>
+    </ion-select>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <app-circle *ngIf="selectedType === 'circulo'"></app-circle>
+    <app-triangle *ngIf="selectedType === 'triangulo'"></app-triangle>
   </div>
 </ion-content>

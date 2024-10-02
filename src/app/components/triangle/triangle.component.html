@@ -1,3 +1,51 @@
-<p>
-  triangle works!
-</p>
+<div class="flex flex-col gap-4 p-4">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Triangulo</ion-card-title>
+      <ion-card-subtitle>Perimetro</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="flex flex-col items-center gap-2">
+      <p>El primetro de un triangulo es la suma de las longitudes de sus tres
+        lados. En otras palabras, es la medida total del contorno o borde del
+        triangulo</p>
+      <ion-img
+        src="assets/images.png"></ion-img>
+    </ion-card-content>
+  </ion-card>
+
+    <form [formGroup]="ladosForm"
+      class="flex flex-col gap-4">
+      <ion-input fill="solid"
+        type="number"
+        required
+        min="0"
+        formControlName="ladoA"
+        label="Lado A (cm)"
+        label-placement="floating"></ion-input>
+      <ion-text color="danger" [hidden]="ladoA?.valid || ladoA?.pristine">Ingrese un numero
+        mayor a 0
+      </ion-text>
+      <ion-input fill="solid"
+        type="number"
+        required
+        min="0"
+        formControlName="ladoB"
+        label="Lado B (cm)"
+        label-placement="floating"></ion-input>
+      <ion-text color="danger" [hidden]="ladoB?.valid || ladoB?.pristine">Ingrese un numero
+        mayor a 0
+      </ion-text>
+      <ion-input fill="solid"
+        type="number"
+        required
+        min="0"
+        formControlName="ladoC"
+        label="Lado C (cm)"
+        label-placement="floating"></ion-input>
+      <ion-text color="danger" [hidden]="ladoC?.valid || ladoC?.pristine">Ingrese un numero
+        mayor a 0
+      </ion-text>
+      <ion-button (click)="calculate()">Calcular el perimetro</ion-button>
+    </form>
+    <ion-text *ngIf="initialCalculation">El perimetro es {{ perimetro }}</ion-text>
+</div>
